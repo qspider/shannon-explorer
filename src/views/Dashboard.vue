@@ -8,10 +8,6 @@
         <span>No new blocks have been produced since  <strong>{{ latestTime }}</strong> </span>
       </div>
     </b-alert>
-
-    <b-row>
-      <b-col><dashboard-price-chart-2 /></b-col>
-    </b-row>
     <!-- Stats Card Vertical -->
     <b-row class="match-height">
       <b-col
@@ -312,12 +308,6 @@
         </b-col>
       </b-row>
     </b-card>
-    <router-link to="/wallet/import">
-      <b-card class="addzone text-center">
-        <feather-icon icon="PlusIcon" />
-        Connect Wallet
-      </b-card>
-    </router-link>
     <operation-modal
       :address="address"
       :validator-address="selectedValidator"

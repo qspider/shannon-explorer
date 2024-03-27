@@ -1,0 +1,19 @@
+{
+    "chain_name": "poktroll-testnet",
+    "api": [
+        "https://testnet-validated-validator-api.poktroll.com"
+    ],
+    "rpc": ["https://testnet-validated-validator-rpc.poktroll.com", "https://testnet-validated-validator-grpc.poktroll.com"],
+    "sdk_version": "0.45.1",
+    "coin_type": "118",
+    "min_tx_fee": "10000",
+    "addr_prefix": "pokt-network",
+    "logo": "/logos/Pocket-Network.jpg",
+    "assets": [{
+        "base": "upokt",
+        "symbol": "POKT",
+        "exponent": "6",
+        "coingecko_id": "pocket-network", 
+        "logo": "/logos/Pocket-Network.jpg"
+    }]
+}

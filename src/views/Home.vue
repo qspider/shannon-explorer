@@ -7,19 +7,17 @@
         <h1
           class="text-primary display-4 font-weight-bolder d-none d-md-block"
         >
-          Ping Dashboard<small class="flow-left">Beta</small>
+          Poktroll Testnet Shannon Explorer<small class="flow-left">Beta</small>
         </h1>
       </div>
     </b-link>
-
     <p class="mb-1">
-      Ping Dashboard is not just an explorer but also a wallet and more ... 🛠
+      Poktroll Shannon Explorer is just an explorer ... 🛠
     </p>
     <h2 class="mb-3">
-      Cosmos Ecosystem Blockchains 🚀
+      POKTROLL TESTNET/SHANNON LAUNCH! 🚀
     </h2>
-
-    <div>
+  <div>
       <b-row class="match-height">
         <b-col
           v-for="(data,index) in chains"
@@ -112,17 +110,15 @@
         <!--/ no result found -->
       </b-row>
     </div>
-    <app-footer class="mb-1" />
   </div>
 </template>
-
 <script>
 /* eslint-disable global-require */
 import {
   BLink, BAvatar, BRow, BCol, BCard, BCardText, BCardTitle, BDropdown, BDropdownItem,
 } from 'bootstrap-vue'
 import Ripple from 'vue-ripple-directive'
-import VuexyLogo from '@core/layouts/components/Logo.vue'
+import VuexyLogo from '@core/layouts/components/pokt-logo.svg'
 import store from '@/store/index'
 import { timeIn, toDay, getLocalChains } from '@/libs/utils'
 import AppFooter from '@/@core/layouts/components/AppFooter.vue'
@@ -165,9 +161,6 @@ export default {
   },
   beforeCreate() {
     const keys = Object.keys(getLocalChains())
-    if (keys.length === 1) {
-      this.$router.push(`/${keys[0]}`)
-    }
   },
   methods: {
     fetch(k) {

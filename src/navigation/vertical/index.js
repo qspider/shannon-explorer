@@ -13,50 +13,19 @@ function processMenu() {
     blockchains.push(menu)
   })
 
-  if (blockchains.length > 1) {
-    chainMenus.push({ header: 'ecosystem' })
-    chainMenus.push({
-      title: 'blockchains',
-      children: blockchains,
-      tag: `${blockchains.length}`,
-      icon: 'https://ping.pub/logo.svg',
-    })
-  }
-  chainMenus.push({ header: 'LINKS' })
   if (isTestnet()) {
     chainMenus.push({
       title: 'Mainnet Explorer',
-      href: 'https://ping.pub',
+      href: 'https://poktroll-testnet.qspider.com',
       icon: 'ChromeIcon',
     })
   } else {
     chainMenus.push({
       title: 'Testnet Explorer',
-      href: 'http://testnet.ping.pub',
+      href: 'https://poktroll-testnet.qspider.com',
       icon: 'LifeBuoyIcon',
     })
   }
-  chainMenus.push({
-    title: 'Github',
-    href: 'https://github.com/ping-pub/explorer',
-    icon: 'GithubIcon',
-  })
-  chainMenus.push({
-    title: 'Discord',
-    href: 'https://discord.gg/CmjYVSr6GW',
-    icon: 'EyeIcon',
-  })
-  chainMenus.push({
-    title: 'Twitter',
-    href: 'https://twitter.com/ping_pub',
-    icon: 'TwitterIcon',
-  })
-  chainMenus.push({
-    title: 'Telegram',
-    href: 'https://t.me/pingpub',
-    icon: 'SendIcon',
-  })
-
   return chainMenus
 }
 
