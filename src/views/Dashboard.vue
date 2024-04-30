@@ -124,197 +124,6 @@
         </div>
       </b-card-body>
     </b-card>
-    <b-card
-      border-variant="primary"
-      bg-variant="transparent"
-      class="shadow-none"
-    >
-      <b-card-title class="d-flex justify-content-between">
-        <span>{{ walletName }} Assets </span>
-        <small>
-          <b-link
-            v-if="address"
-            :to="`./${chain}/account/${address}`"
-          >
-            More
-          </b-link>
-          <b-link
-            v-else
-            :to="`/wallet/accounts`"
-          >
-            Not connected?
-          </b-link>
-        </small>
-      </b-card-title>
-      <b-row>
-        <b-col
-          lg="3"
-          sm="6"
-        >
-          <dashboard-card-horizontal
-            icon="DollarSignIcon"
-            color="success"
-            :statistic="walletBalances"
-            statistic-title="Balances"
-          />
-        </b-col>
-        <b-col
-          lg="3"
-          sm="6"
-        >
-          <dashboard-card-horizontal
-            icon="LockIcon"
-            :statistic="walletStaking"
-            statistic-title="Staking"
-          />
-        </b-col>
-        <b-col
-          lg="3"
-          sm="6"
-        >
-          <dashboard-card-horizontal
-            icon="ArrowUpCircleIcon"
-            color="info"
-            :statistic="walletRewards"
-            statistic-title="Rewards"
-          />
-        </b-col>
-        <b-col
-          lg="3"
-          sm="6"
-        >
-          <dashboard-card-horizontal
-            icon="UnlockIcon"
-            color="danger"
-
-            :statistic="walletUnbonding"
-            statistic-title="Unbonding"
-          />
-        </b-col>
-      </b-row>
-      <b-row v-if="stakingList && stakingList.length > 0">
-        <b-col>
-          <b-table
-            :items="stakingList"
-            :fields="fields"
-            striped
-            hover
-            responsive="sm"
-            stacked="sm"
-          >
-            <template #cell(action)="data">
-              <!-- size -->
-              <b-button-group
-                size="sm"
-              >
-                <b-button
-                  v-b-modal.operation-modal
-                  v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-                  v-b-tooltip.hover.top="'Delegate'"
-                  variant="outline-primary"
-                  @click="selectDelegation(data,'Delegate')"
-                >
-                  <feather-icon icon="LogInIcon" />
-                </b-button>
-                <b-button
-                  v-b-modal.operation-modal
-                  v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-                  v-b-tooltip.hover.top="'Redelegate'"
-                  variant="outline-primary"
-                  @click="selectDelegation(data,'Redelegate')"
-                >
-                  <feather-icon icon="ShuffleIcon" />
-                </b-button>
-                <b-button
-                  v-b-modal.operation-modal
-                  v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-                  v-b-tooltip.hover.top="'Unbond'"
-                  variant="outline-primary"
-                  @click="selectDelegation(data,'Unbond')"
-                >
-                  <feather-icon icon="LogOutIcon" />
-                </b-button>
-              </b-button-group>
-            </template>
-          </b-table>
-        </b-col>
-      </b-row>
-
-      <b-row v-if="unbonding && unbonding.length > 0">
-        <b-col>
-          <b-card>
-            <b-card-header class="pt-0 pl-0 pr-0">
-              <b-card-title>Unbonding Tokens</b-card-title>
-            </b-card-header>
-            <b-card-body class="pl-0 pr-0">
-              <b-row
-                v-for="item in unbonding"
-                :key="item.validator_address"
-              >
-                <b-col cols="12">
-                  <span class="font-weight-bolder">From: <router-link :to="`../staking/${item.validator_address}`">{{ item.validator_address }}</router-link></span>
-                </b-col>
-                <b-col cols="12">
-                  <b-table
-                    :items="item.entries"
-                    class="mt-1"
-                    striped
-                    hover
-                    responsive="sm"
-                    stacked="sm"
-                  >
-                    <template #cell(completion_time)="data">
-                      {{ formatDate(data.item.completion_time) }}
-                    </template>
-                    <template #cell(initial_balance)="data">
-                      {{ data.item.initial_balance }}
-                    </template>
-                    <template #cell(balance)="data">
-                      {{ data.item.balance }}
-                    </template>
-                  </b-table>
-                </b-col>
-              </b-row>
-            </b-card-body>
-          </b-card>
-        </b-col>
-      </b-row>
-      <b-row
-        v-if="address"
-        class="mt-1"
-      >
-        <b-col cols="6">
-          <b-button
-            v-b-modal.operation-modal
-            block
-            variant="success"
-            @click="selectSend()"
-          >
-            <feather-icon icon="SendIcon" />
-            Send
-          </b-button>
-        </b-col>
-        <b-col cols="6">
-          <b-button
-            block
-            variant="info"
-            :to="`${chain}/account/${address}/receive`"
-          >
-            <feather-icon
-              icon="PlusCircleIcon"
-            />
-            receive
-          </b-button>
-        </b-col>
-      </b-row>
-    </b-card>
-    <operation-modal
-      :address="address"
-      :validator-address="selectedValidator"
-      :type="operationModalType"
-      :proposal-id="selectedProposalId"
-      :proposal-title="selectedTitle"
-    />
   </div>
 </template>
 
@@ -333,7 +142,6 @@ import dayjs from 'dayjs'
 import ParametersModuleComponent from './components/parameters/ParametersModuleComponent.vue'
 import DashboardCardHorizontal from './components/dashboard/DashboardCardHorizontal.vue'
 import DashboardCardVertical from './components/dashboard/DashboardCardVertical.vue'
-import DashboardPriceChart2 from './components/dashboard/DashboardPriceChart2.vue'
 import FeatherIcon from '../@core/components/feather-icon/FeatherIcon.vue'
 
 export default {
@@ -359,7 +167,6 @@ export default {
     OperationModal,
     ParametersModuleComponent,
     DashboardCardHorizontal,
-    DashboardPriceChart2,
     DashboardCardVertical,
     FeatherIcon,
   },
@@ -620,6 +427,6 @@ export default {
     box-shadow: none;
 }
 .addzone :hover {
-    border: 2px dashed #7367F0;
+    border: 2px dashed #161058;
 }
 </style>

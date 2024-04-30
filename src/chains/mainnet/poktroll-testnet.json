@@ -1,9 +1,10 @@
 {
     "chain_name": "poktroll-testnet",
     "api": [
-        "https://testnet-validated-validator-api.poktroll.com"
+        "https://testnet-validated-validator-api.poktroll.com", "https://testnet-validated-validator-grpc.poktroll.com"
     ],
-    "rpc": ["https://testnet-validated-validator-rpc.poktroll.com", "https://testnet-validated-validator-grpc.poktroll.com"],
+    "rpc": ["https://testnet-validated-validator-rpc.poktroll.com"
+    ],
     "sdk_version": "0.45.1",
     "coin_type": "118",
     "min_tx_fee": "10000",

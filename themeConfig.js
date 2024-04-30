@@ -11,21 +11,21 @@ export const $themeConfig = {
   app: {
     appName: 'POKTROLL', // Will update name in navigation menu (Branding)
     // eslint-disable-next-line global-require
-    appLogoImage: '/logo.svg', // Will update logo in navigation menu (Branding)
+    appLogoImage: '/pocket-network-pokt-logo.png', // Will update logo in navigation menu (Branding)
   },
   layout: {
     isRTL: false,
-    skin: 'dark', // light, dark, bordered, semi-dark
+    skin: 'semi-dark', // light, dark, bordered, semi-dark
     routerTransition: 'fade-bottom', // zoom-fade, slide-fade, fade-bottom, fade, zoom-out, none
     type: 'vertical', // vertical, horizontal
-    contentWidth: 'full', // full, boxed
+    contentWidth: 'boxed', // full, boxed
     menu: {
       hidden: false,
-      isCollapsed: false,
+      isCollapsed: true,
     },
     navbar: {
       // ? For horizontal menu, navbar type will work for navMenu type
-      type: 'floating', // static , sticky , floating, hidden
+      type: 'hidden', // static , sticky , floating, hidden
       backgroundColor: '', // BS color options [primary, success, etc]
     },
     footer: {

@@ -159,5 +159,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~@core/scss/base/themes/bordered-layout.scss";
+@import "~@core/scss/base/themes/dark-layout.scss";
 </style>
